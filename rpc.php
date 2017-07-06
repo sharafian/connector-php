@@ -109,12 +109,13 @@
 
     debug("$id: fulfilled on $prefix, fulfilling on {$peer[0]}");
     rpc($peer[1], $peer[0], 'fulfill_condition', json_encode($obj));
-    echo 'true\n';
+    echo "true\n";
 
   } else if ($method == "send_request") {
     $destination = parseQuoteRequest($obj[0]->ilp);
     $next = getNextHop($destination);
 
+    debug("forwarding request for $destination to {$next[1]} via {$next[2]}");
     $result = rpc($next[2], $next[1], 'send_request', json_encode($obj));
     echo "$result\n";
   }
