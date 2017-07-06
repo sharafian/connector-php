@@ -1,1 +1,2 @@
-left. http://localhost:8090/rpc/bob
+test.right. http://ilp-kit2:4010/api/peers/rpc
+test.left. http://ilp-kit1:3010/api/peers/rpc

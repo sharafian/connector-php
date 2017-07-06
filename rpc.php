@@ -34,8 +34,8 @@
 
   function parsePacket ($packet) {
     $decoded = base64_decode($packet);
-    $len = ord($decoded[10]);
-    return substr($decoded, 11, $len);
+    $len = ord($decoded[12]);
+    return substr($decoded, 13, $len);
   }
 
   function parseQuoteRequest ($quote) {
@@ -77,11 +77,14 @@
 
     $destTransfer->id = $obj->id;
     $destTransfer->amount = $obj->amount;
-    $destTransfer->to = $next[1];
+    $destTransfer->to = $next[1] . 'server';
+    $destTransfer->ledger = $next[1];
+    $destTransfer->from = $next[1] . 'client';
+    $destTransfer->ilp = $obj->ilp;
     $destTransfer->executionCondition = $obj->executionCondition;
     $destTransfer->expiresAt = $obj->expiresAt;
 
-    return json_encode($destTransfer);
+    return '[' . json_encode($destTransfer) . ']';
   }
   
   $prefix = $_GET["prefix"];

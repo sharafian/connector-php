@@ -1,1 +1,2 @@
-example. right. http://localhost:8090/rpc/alice
+test.dev.kit2. test.right. http://ilp-kit2:4010/api/peers/rpc
+test.dev.kit1. test.left. http://ilp-kit1:3010/api/peers/rpc
